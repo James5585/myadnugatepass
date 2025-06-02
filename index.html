@@ -477,7 +477,7 @@
                     </svg>
                     Print
                 </button>
-                <button onclick="sendApplicationSummary()" class="px-4 py-2 bg-[#003366] text-white rounded-md hover:bg-[#002244]">
+                <button onclick="function sendApplicationSummary() {     const formData = getFormData();      fetch("https://script.google.com/macros/s/YOUR_DEPLOYED_URL/exec", {         method: "POST",         body: JSON.stringify(formData),         headers: {             "Content-Type": "application/json"         }     })     .then(response => response.json())     .then(data => {         console.log("Success:", data);         closeSummaryModal();         document.getElementById('successMessage').classList.remove('hidden');         document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });     })     .catch(error => {         console.error("Error:", error);         alert("Something went wrong. Please try again.");     }); }" class="px-4 py-2 bg-[#003366] text-white rounded-md hover:bg-[#002244]">
                     Send Summary
                 </button>
             </div>
@@ -1132,7 +1132,7 @@
             window.print();
         }
         
-        function sendApplicationSummary() {
+        function sendApplicationSummary() {     const formData = getFormData();      fetch("https://script.google.com/macros/s/YOUR_DEPLOYED_URL/exec", {         method: "POST",         body: JSON.stringify(formData),         headers: {             "Content-Type": "application/json"         }     })     .then(response => response.json())     .then(data => {         console.log("Success:", data);         closeSummaryModal();         document.getElementById('successMessage').classList.remove('hidden');         document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });     })     .catch(error => {         console.error("Error:", error);         alert("Something went wrong. Please try again.");     }); } {
             // In a real application, this would send the summary to the server
             // For this demo, we'll simulate sending and show a success message
             
